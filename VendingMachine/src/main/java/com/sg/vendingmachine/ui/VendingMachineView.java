@@ -26,7 +26,7 @@ public class VendingMachineView {
         io.print("---------------------");
     }
     public void displayProduct(Product product) {
-        io.print(product.getProductId() + "\t" + product.getProductName());
+        io.print(product.getProductId() + "\t" + product.getProductName() + "\t" + product.getPrice());
     }
     public BigDecimal getMoneyInput() {
         return io.readBigDecimal("Please input the amount money in dollars before choosing a beverage.");
