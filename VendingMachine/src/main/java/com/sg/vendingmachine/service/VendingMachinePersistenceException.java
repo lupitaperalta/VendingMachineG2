@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.classroster.service;
+package com.sg.vendingmachine.service;
 
 /**
  *
- * @author salajrawi
+ * @author Group 2
  */
-public class ClassRosterDataValidationException extends Exception{
+public class VendingMachinePersistenceException extends Exception{
 
-    public ClassRosterDataValidationException(String message) {
+    public VendingMachinePersistenceException(String message) {
         super(message);
     }
 
-    public ClassRosterDataValidationException(String message,
-            Throwable cause) {
+    public VendingMachinePersistenceException(String message, Throwable cause) {
         super(message, cause);
     }    
 }

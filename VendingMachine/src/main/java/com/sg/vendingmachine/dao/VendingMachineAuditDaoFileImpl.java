@@ -1,5 +1,7 @@
 package com.sg.vendingmachine.dao;
 
+import com.sg.vendingmachine.service.VendingMachinePersistenceException;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;

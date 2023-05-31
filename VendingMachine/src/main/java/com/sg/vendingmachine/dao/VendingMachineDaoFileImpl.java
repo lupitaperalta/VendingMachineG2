@@ -1,5 +1,7 @@
 package com.sg.vendingmachine.dao;
 import com.sg.vendingmachine.dto.Product;
+import com.sg.vendingmachine.service.VendingMachinePersistenceException;
+
 import java.io.*;
 import java.util.*;
 
