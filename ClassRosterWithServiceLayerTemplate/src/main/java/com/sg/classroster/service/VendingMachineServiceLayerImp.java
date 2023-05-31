@@ -15,10 +15,10 @@ import java.util.List;
  *
  * @author salajrawi
  */
-public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
-classRosterDao dao;
-   private ClassRosterAuditDao auditDao;
-public ClassRosterServiceLayerImpl(classRosterDao dao, ClassRosterAuditDao auditDao) {
+public class VendingMachineServiceLayerImp implements VendingMachineServiceLayer {
+    VendingMachineDao dao;
+    private VendingMachineAuditDao auditDao;
+public ClassRosterServiceLayerImpl(VendingMachineDao dao, VendingMachineAuditDao auditDao) {
     this.dao = dao;
     this.auditDao = auditDao;
 }
