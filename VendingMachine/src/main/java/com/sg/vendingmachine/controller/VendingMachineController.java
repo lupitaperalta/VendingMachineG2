@@ -9,6 +9,7 @@ import com.sg.vendingmachine.dto.Product;
 import com.sg.vendingmachine.service.VendingMachineInsufficientFundsException;
 import com.sg.vendingmachine.service.VendingMachineNoItemInventoryException;
 import com.sg.vendingmachine.service.VendingMachinePersistenceException;
+import com.sg.vendingmachine.service.VendingMachineServiceLayer;
 import com.sg.vendingmachine.ui.VendingMachineView;
 import java.math.BigDecimal;
 import java.util.Scanner;
