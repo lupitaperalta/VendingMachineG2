@@ -103,7 +103,7 @@ public class VendingMachineController {
         
     }
     
-    Product getChosenProduct() {
+    Product getChosenProduct() throws VendingMachinePersistenceException {
         
         String productId = view.promptUserProductChoice();
         
@@ -112,6 +112,7 @@ public class VendingMachineController {
             Product product = service.getChosenProduct(productId);
             view.displayUserProductChoice(product);
             return product;
+            
         } catch (VendingMachineNoItemInventoryException ex) {
             
             view.displayErrorMessage(ex.getMessage());
