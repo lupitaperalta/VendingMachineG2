@@ -1,7 +1,6 @@
 package com.sg.vendingmachine.dao;
 
 import com.sg.vendingmachine.dto.Product;
-
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +18,7 @@ public interface VendingMachineDao {
 
     Product removeProduct(String productId);
 
-    //TODO: FIX EXCEPTION
-    Map<String, Product> loadProductsFromFile() throws Exception;
+    Map<String, Product> loadProductsFromFile() throws VendingMachinePersistenceException;
 
-    void writeProductToFile() throws Exception;
+    void writeProductToFile() throws VendingMachinePersistenceException;
 }

@@ -51,13 +51,12 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao{
     }
 
     @Override
-    public Map<String, Product> loadProductsFromFile() throws Exception {
+    public Map<String, Product> loadProductsFromFile() throws VendingMachinePersistenceException {
         Scanner scanner;
         try {
             scanner = new Scanner(new BufferedReader(new FileReader(INVENTORY_FILE)));
         } catch(FileNotFoundException e) {
-            //TODO: VENDINGMACHINEPERSISTENCEEXCEPTION
-            throw new FileNotFoundException("-_- Could not load data to memory");
+            throw new VendingMachinePersistenceException("-_- Could not load data to memory");
         }
         String currentLine;
         Product currentProduct;
@@ -72,12 +71,12 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao{
     };
 
     @Override
-    public void writeProductToFile() throws Exception {
+    public void writeProductToFile() throws VendingMachinePersistenceException {
         PrintWriter out;
         try {
             out = new PrintWriter(new FileWriter(INVENTORY_FILE));
         } catch (IOException e) {
-            throw new FileNotFoundException("Could not save product data");
+            throw new VendingMachinePersistenceException("Could not save product data");
         }
         String productAsText;
         List<Product> productList = this.getAllProducts();
