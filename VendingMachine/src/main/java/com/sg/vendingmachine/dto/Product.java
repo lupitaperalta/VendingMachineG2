@@ -55,4 +55,45 @@ public class Product {
     public int getItemsInStock(){return itemsInStock;}
     public void setItemsInStock(int itemsInStock){this.itemsInStock = itemsInStock;}
     
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.productId);
+        hash = 79 * hash + Objects.hashCode(this.productName);
+        hash = 79 * hash + Objects.hashCode(this.price);
+        hash = 79 * hash + this.itemsInStock;
+        return hash;
+    }
+    
+    @Override 
+    public String toString(){
+        return "Product{productId=" + productId + ", productName=" + productName + ", price=" + price + ", itemsInStock=" + itemsInStock;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if (this == o){return true;}
+        if (o == null){return false;}
+        
+        if (getClass() != o.getClass()){
+            return false;
+        }
+        final Product productB = (Product) o;
+        if (this.itemsInStock != productB.itemsInStock){return false;}
+        if (!Objects.equals(this.productId, productB.productId)){
+            return false;
+        }
+        if (!Objects.equals(this.productName, productB.productName)){
+            return false;
+        }
+        if (!Objects.equals(this.price, productB.price)){
+            return false;
+        }
+        return true;
+    }
+    
+    public String marshalProductAsText(){
+        return productId + DELIMITER + productName + DELIMITER + price + DELIMITER + itemsInStock;
+    }
+    
 }
