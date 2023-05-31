@@ -3,7 +3,7 @@ package com.sg.vendingmachine.ui;
 public class UserIOConsoleImpl implements UserIO {
     @Override
     public void print(String msg) {
-        
+
     }
 
     @Override
