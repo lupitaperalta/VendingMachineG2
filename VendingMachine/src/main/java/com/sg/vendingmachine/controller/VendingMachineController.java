@@ -6,7 +6,6 @@ package com.sg.vendingmachine.controller;
 
 import com.sg.vendingmachine.dto.Change;
 import com.sg.vendingmachine.dto.Product;
-import com.sg.vendingmachine.service.VendingMachineServiceLayer;
 import com.sg.vendingmachine.service.VendingMachineInsufficientFundsException;
 import com.sg.vendingmachine.service.VendingMachineNoItemInventoryException;
 import com.sg.vendingmachine.service.VendingMachinePersistenceException;
@@ -43,12 +42,12 @@ public class VendingMachineController {
             boolean isEnoughMoney = false;
             
             try {
-                displayWelcomeHeader();
+                displayHeader();
                 
                 do {
                     productMenu();
                     
-                    moneyDeposited = userMoneyInput(moneyDeposited);
+                    moneyDeposited - userMoneyInput(moneyDeposited);
                     
                     selectedProduct = getChosenProduct();
                     
@@ -59,7 +58,7 @@ public class VendingMachineController {
                     }
                 } while (!isEnoughMoney); 
                 
-                displayUserMoneyInput(moneyDeposited);
+                dispayUserMoneyInput(moneyDeposited);
                 displayChangeReturnedToUser(moneyDesposited, selectedProduct);
                 updateSoldProduct(selectedProduct);
                 saveProductList;
@@ -82,16 +81,14 @@ public class VendingMachineController {
         
     } 
     
-
-    void displayWelcomeHeader() {
-        view.displayHeader();
-      
+    void displayHeader() {
+        view.disPlayVendingMachineWelcome();
+        
     }  
     
     void productMenu() {
         
-        view.displayMenuBanner();
-        view.displayItemHeader();
+        view.displayProductHeader();
         view.displayProduct();
         
         
@@ -104,16 +101,15 @@ public class VendingMachineController {
         
     }
     
-    Product getChosenProduct() throws VendingMachinePersistenceException {
+    Product getChosenProduct() {
         
         String productId = view.promptUserProductChoice();
         
         try {
             
             Product product = service.getChosenProduct(productId);
-            view.displayUserProductChoice(product);
+            view.displayUserChoiceOfProduct(product);
             return product;
-            
         } catch (VendingMachineNoItemInventoryException ex) {
             
             view.displayErrorMessage(ex.getMessage());
