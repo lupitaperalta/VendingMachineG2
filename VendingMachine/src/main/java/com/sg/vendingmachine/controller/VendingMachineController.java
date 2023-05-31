@@ -41,7 +41,7 @@ public class VendingMachineController {
             boolean isEnoughMoney = false;
             
             try {
-                displayHeader();
+                displayWelcomeHeader();
                 
                 do {
                     productMenu();
@@ -80,14 +80,15 @@ public class VendingMachineController {
         
     } 
     
-    void displayHeader() {
-        view.disPlayVendingMachineWelcome();
+    void displayWelcomeHeader() {
+        view.displayHeader();
         
     }  
     
     void productMenu() {
         
-        view.displayProductHeader();
+        view.displayMenuBanner();
+        view.displayItemHeader();
         view.displayProduct();
         
         
@@ -107,7 +108,7 @@ public class VendingMachineController {
         try {
             
             Product product = service.getChosenProduct(productId);
-            view.displayUserChoiceOfProduct(product);
+            view.displayUserProductChoice(product);
             return product;
         } catch (VendingMachineNoItemInventoryException ex) {
             
