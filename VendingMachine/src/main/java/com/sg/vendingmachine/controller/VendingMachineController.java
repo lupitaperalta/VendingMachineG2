@@ -89,10 +89,10 @@ public class VendingMachineController {
         
         view.displayProductHeader();
         view.displayProduct();
-        view.promptUserMoney
+        
         
     }
-    
+    //Need to Update
     BigDecimal userMoneyInput (BigDecimal moneyDeposited) {
         
          moneyDeposited = view.promptUserMoney;
