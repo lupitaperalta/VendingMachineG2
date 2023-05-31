@@ -1,0 +1,15 @@
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\dao\classRosterDao.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\ui\UserIO.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\service\ClassRosterServiceLayer.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\dao\ClassRosterPersistenceException.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\dto\Student.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\dao\ClassRosterDaoFileImpl.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\service\ClassRosterDataValidationException.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\controller\ClassRosterController.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\ui\UserIOConsoleImpl.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\App.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\ui\ClassRosterView.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\dao\ClassRosterAuditDao.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\dao\ClassRosterAuditDaoFileImpl.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\service\ClassRosterDuplicateIdException.java
+C:\Users\salajrawi\OneDrive - Wiley\Desktop\Classes@2023\DI003\Week3\Day4\ClassRosterWithServiceLayerTemplate\src\main\java\com\sg\classroster\service\ClassRosterServiceLayerImpl.java
