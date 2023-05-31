@@ -47,7 +47,7 @@ public class VendingMachineController {
                 do {
                     productMenu();
                     
-                    moneyDeposited - userMoneyInput(moneyDeposited);
+                    moneyDeposited = userMoneyInput(moneyDeposited);
                     
                     selectedProduct = getChosenProduct();
                     
@@ -58,7 +58,7 @@ public class VendingMachineController {
                     }
                 } while (!isEnoughMoney); 
                 
-                dispayUserMoneyInput(moneyDeposited);
+                displayUserMoneyInput(moneyDeposited);
                 displayChangeReturnedToUser(moneyDesposited, selectedProduct);
                 updateSoldProduct(selectedProduct);
                 saveProductList;
@@ -81,9 +81,10 @@ public class VendingMachineController {
         
     } 
     
+
     void displayWelcomeHeader() {
         view.displayHeader();
-        
+      
     }  
     
     void productMenu() {
