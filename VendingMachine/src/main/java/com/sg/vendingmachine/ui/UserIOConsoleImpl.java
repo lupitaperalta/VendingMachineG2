@@ -1,53 +1,107 @@
 package com.sg.vendingmachine.ui;
+/**
+ *
+ * @author Group 2
+ */
+
+import java.math.BigDecimal;
+import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
+    Scanner sc;
     @Override
     public void print(String msg) {
+        System.out.println(msg);
 
     }
 
     @Override
     public double readDouble(String prompt) {
-        return 0;
+        System.out.println(prompt);
+        return Double.parseDouble(sc.nextLine());
     }
 
     @Override
     public double readDouble(String prompt, double min, double max) {
-        return 0;
+        double num;
+        do {
+            System.out.println(prompt);
+            num = sc.nextInt();
+        }
+        while(num < min || num > max);
+        return num;
     }
 
     @Override
     public float readFloat(String prompt) {
-        return 0;
+        System.out.println(prompt);
+        return sc.nextFloat();
     }
 
     @Override
     public float readFloat(String prompt, float min, float max) {
-        return 0;
+        float num;
+        do {
+            System.out.println(prompt);
+            num = sc.nextFloat();
+        }
+        while(num < min || num > max);
+        return num;
     }
 
     @Override
     public int readInt(String prompt) {
-        return 0;
+        System.out.println(prompt);
+        return sc.nextInt();
     }
 
     @Override
     public int readInt(String prompt, int min, int max) {
-        return 0;
+        int num;
+        do {
+            System.out.println(prompt);
+            num = Integer.parseInt(sc.nextLine());
+        }
+        while(num < min || num > max);
+        return num;
     }
 
     @Override
     public long readLong(String prompt) {
-        return 0;
+        System.out.println(prompt);
+        return sc.nextLong();
     }
 
     @Override
     public long readLong(String prompt, long min, long max) {
-        return 0;
+        System.out.println(prompt);
+        return sc.nextLong();
     }
 
     @Override
     public String readString(String prompt) {
-        return null;
+        System.out.println(prompt);
+        return sc.nextLine();
+    }
+    @Override
+    public BigDecimal readBigDecimal(String prompt) {
+        System.out.println(prompt);
+        return new BigDecimal(sc.nextLine());
+    }
+
+    @Override
+    public BigDecimal readBigDecimal(String prompt, BigDecimal min, BigDecimal max) {
+        BigDecimal amount = null;
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                String input = readString(prompt);
+                amount = new BigDecimal(input);
+                validInput = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid amount.");
+            }
+        }
+        return amount;
     }
 }

@@ -1,4 +1,9 @@
 package com.sg.vendingmachine.ui;
+/**
+ *
+ * @author Group 2
+ */
+import java.math.BigDecimal;
 
 public interface UserIO {
     void print(String msg);
@@ -20,4 +25,6 @@ public interface UserIO {
     long readLong(String prompt, long min, long max);
 
     String readString(String prompt);
+    BigDecimal readBigDecimal(String prompt);
+    BigDecimal readBigDecimal(String prompt, BigDecimal min, BigDecimal max);
 }
