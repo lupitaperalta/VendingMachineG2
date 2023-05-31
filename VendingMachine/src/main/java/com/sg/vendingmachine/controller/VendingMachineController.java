@@ -6,6 +6,7 @@ package com.sg.vendingmachine.controller;
 
 import com.sg.vendingmachine.dto.Change;
 import com.sg.vendingmachine.dto.Product;
+import com.sg.vendingmachine.service.VendingMachineServiceLayer;
 import com.sg.vendingmachine.service.VendingMachineInsufficientFundsException;
 import com.sg.vendingmachine.service.VendingMachineNoItemInventoryException;
 import com.sg.vendingmachine.service.VendingMachinePersistenceException;
