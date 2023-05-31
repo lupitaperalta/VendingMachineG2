@@ -11,7 +11,7 @@ public interface VendingMachineDao {
 
     List<Product> getAllProducts();
 
-    List<Product> getAllProductsIds();
+    List<String> getAllProductsIds();
 
     Product getProduct(String productId);
 

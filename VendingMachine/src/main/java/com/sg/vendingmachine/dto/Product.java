@@ -92,7 +92,7 @@ public class Product {
         return true;
     }
     
-    public String marshalProductAsText(){
+    public String marshallProductAsText(){
         return productId + DELIMITER + productName + DELIMITER + price + DELIMITER + itemsInStock;
     }
     
