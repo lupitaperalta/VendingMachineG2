@@ -12,7 +12,10 @@ import com.sg.vendingmachine.service.VendingMachinePersistenceException;
 import com.sg.vendingmachine.service.VendingMachineServiceLayer;
 import com.sg.vendingmachine.ui.VendingMachineView;
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,12 +31,12 @@ public class VendingMachineController {
         this.service =service;
     }
     
-    public void run() throws VendingMachinePersistenceException {
+    public void run() throws VendingMachinePersistenceException, VendingMachineNoItemInventoryException {
         //DECALRED VARIABLES
         BigDecimal moneyDeposited = new BigDecimal("0");
         Product selectedProduct = null;
         String keepGoing = "yes";
-        String input;
+
         Scanner scan = new Scanner(System.in);
         
         while(keepGoing.equals("yes")){
@@ -47,21 +50,21 @@ public class VendingMachineController {
                 do {
                     productMenu();
                     
-                    moneyDeposited - userMoneyInput(moneyDeposited);
+                    moneyDeposited = userMoneyInput(moneyDeposited);
                     
                     selectedProduct = getChosenProduct();
                     
-                    isEnoughMoney = didUserPutSufficientAmountOfMoney(userAmount, selectedProduct);
+                    isEnoughMoney = didUserPutSufficientAmountOfMoney(moneyDeposited, selectedProduct);
                     
                     if(toExitVendingMachine(isEnoughMoney)){
                         return;
                     }
                 } while (!isEnoughMoney); 
                 
-                dispayUserMoneyInput(moneyDeposited);
-                displayChangeReturnedToUser(moneyDesposited, selectedProduct);
+                displayUserMoneyInput(moneyDeposited);
+                displayChangeReturnedToUser(moneyDeposited, selectedProduct);
                 updateSoldProduct(selectedProduct);
-                saveProductList;
+                saveProudctList();
                 
                                 
             } catch (VendingMachinePersistenceException ex){
@@ -82,63 +85,69 @@ public class VendingMachineController {
     } 
     
     void displayHeader() {
-        view.disPlayVendingMachineWelcome();
+        view.displayHeader();
+        view.displayMenuBanner();
+        view.displayItemHeader();
         
     }  
     
-    void productMenu() {
-        
-        view.displayProductHeader();
-        view.displayProduct();
-        
-        
-    }
     //Need to Update
-    BigDecimal userMoneyInput (BigDecimal moneyDeposited) {
+    void productMenu() throws VendingMachinePersistenceException, VendingMachineNoItemInventoryException {
         
-         moneyDeposited = view.promptUserMoney;
-         return moneyDeposited;
+             
         
     }
     
-    Product getChosenProduct() {
+ 
+    BigDecimal userMoneyInput (BigDecimal amount) {
         
+       return view.promptMoneyInput();
+        
+    }
+    
+    Product getChosenProduct() throws VendingMachinePersistenceException {
+       
         String productId = view.promptUserProductChoice();
         
         try {
             
             Product product = service.getChosenProduct(productId);
-            view.displayUserChoiceOfProduct(product);
+            view.displayUserProductChoice(product);
+            
             return product;
+            
         } catch (VendingMachineNoItemInventoryException ex) {
             
-            view.displayErrorMessage(ex.getMessage());
+            view.displayErrorMessage(ex.getMessage());       
         }
         
+        return null;
     }
     
     boolean didUserPutSufficientAmountOfMoney(BigDecimal userAmount, Product product){
         try {
             
-            service.checkSufficientMoneyToBuyProduct(userAmount, product);
-            return;
+           service.checkSufficientMoneyToBuyProduct(userAmount,product);
             
+            return true;
         } catch (VendingMachineInsufficientFundsException ex) {
             
             displayErrorMessage(ex.getMessage());
             displayUserMoneyInput(userAmount);
             return false;
         }
+        
+        
     }
     
     void displayUserMoneyInput(BigDecimal amount){
-        view.displayUserMoneyInput(amount);
+        view.displyMoneyInput(amount);
     }
     
     void displayChangeReturnedToUser(BigDecimal amount, Product product){
         
         Change change = service.calculateChange(amount, product);
-        view.displayChangeDue(change);
+        view.displayChange(change);
     }
     
     boolean toExitVendingMachine(boolean isEnoughMoney) {
@@ -164,9 +173,13 @@ public class VendingMachineController {
         }
     }
     
-    void saveProudctList() throws VendingMachinePersistenceException{
+    void saveProudctList() throws VendingMachinePersistenceException {
         
-        service.saveProductList();
+        try {
+            service.saveProductList();
+        } catch (VendingMachineNoItemInventoryException ex) {
+            Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     void displayFinalMessage() {
