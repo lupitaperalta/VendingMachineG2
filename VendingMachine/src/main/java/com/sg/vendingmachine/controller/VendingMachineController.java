@@ -4,6 +4,7 @@
  */
 package com.sg.vendingmachine.controller;
 
+import com.sg.vendingmachine.dao.VendingMachineException;
 import com.sg.vendingmachine.dto.Change;
 import com.sg.vendingmachine.dto.Product;
 import com.sg.vendingmachine.service.VendingMachineInsufficientFundsException;
@@ -130,7 +131,7 @@ public class VendingMachineController {
             
             return product;
             
-        } catch (VendingMachineNoItemInventoryException ex) {
+        } catch (VendingMachineNoItemInventoryException | VendingMachineException ex) {
             
             view.displayErrorMessage(ex.getMessage());       
         }
@@ -200,7 +201,7 @@ public class VendingMachineController {
             
             service.updateProductSale(product);
            
-        } catch(VendingMachineNoItemInventoryException ex) {
+        } catch(VendingMachineNoItemInventoryException | VendingMachineException ex) {
             
              throw new VendingMachinePersistenceException (ex.getMessage());
         }
@@ -210,7 +211,7 @@ public class VendingMachineController {
         
         try {
             service.saveProductList();
-        } catch (VendingMachineNoItemInventoryException ex) {
+        } catch (VendingMachineNoItemInventoryException | VendingMachineException ex) {
             Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

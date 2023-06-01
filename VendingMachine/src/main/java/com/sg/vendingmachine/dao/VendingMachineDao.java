@@ -8,19 +8,19 @@ import java.util.Map;
 
 public interface VendingMachineDao {
 
-    Product addProduct(String productId, Product product);
+    Product addProduct(String productId, Product product) throws VendingMachineException;
 
-    List<Product> getAllProducts();
+    List<Product> getAllProducts() throws VendingMachineException;
 
-    List<String> getAllProductsIds();
+    List<String> getAllProductsIds() throws VendingMachineException;
 
-    Product getProduct(String productId);
+    Product getProduct(String productId) throws VendingMachineException;
 
-    Product updateProduct(String productId, Product product);
+    Product updateProduct(String productId, Product product) throws VendingMachineException;
 
-    Product removeProduct(String productId);
+    Product removeProduct(String productId) throws VendingMachineException;
 
         Map<String, Product> loadProductsFromFile() throws VendingMachinePersistenceException;
 
-    void writeProductToFile() throws VendingMachinePersistenceException;
+    void writeProductToFile() throws VendingMachinePersistenceException, VendingMachineException;
 }

@@ -22,10 +22,11 @@ public class VendingMachineDaoStubImpl implements VendingMachineDao {
     }
 
     @Override
-    public void addProduct(String productId, Product product) throws VendingMachineException {
+    public Product addProduct(String productId, Product product) throws VendingMachineException {
         if (productId.equals(onlyProduct.getProductId())){
         }else{
         }
+        return product;
     }
 
     @Override

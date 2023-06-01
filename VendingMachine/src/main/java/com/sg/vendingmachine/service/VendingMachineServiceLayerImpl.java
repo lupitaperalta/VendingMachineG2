@@ -37,13 +37,13 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
 
     @Override
-    public void saveProductList() throws VendingMachinePersistenceException {
+    public void saveProductList() throws VendingMachinePersistenceException, VendingMachineException {
         dao.writeProductToFile();
         auditDao.writeAuditEntry("Product list saved to file");
     }
 
     @Override
-     public Product getChosenProduct(String productId) throws VendingMachineNoItemInventoryException {
+     public Product getChosenProduct(String productId) throws VendingMachineNoItemInventoryException, VendingMachineException {
         validateProductInStock(productId);
         return dao.getProduct(productId);
     }
@@ -62,7 +62,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
 
     @Override
-    public void updateProductSale(Product product) throws VendingMachinePersistenceException, VendingMachineNoItemInventoryException {
+    public void updateProductSale(Product product) throws VendingMachinePersistenceException, VendingMachineNoItemInventoryException, VendingMachineException {
         if (product.getItemsInStock()>0){
             product.setItemsInStock(product.getItemsInStock()-1);
         }else{
@@ -72,8 +72,8 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         auditDao.writeAuditEntry("Product ID: "+ product.getProductId()+" is updated");
     }
 
-    private void validateProductInStock(String productId) throws VendingMachineNoItemInventoryException {
-        List<String>ids=dao.getAllProductsIds();
+    private void validateProductInStock(String productId) throws VendingMachineNoItemInventoryException, VendingMachineException {
+        List<String>ids = dao.getAllProductsIds();
         Product product = dao.getProduct(productId);
         if(!ids.contains(productId)||product.getItemsInStock()<1){
             throw new VendingMachineNoItemInventoryException("Error: Selected product is not in stock");
