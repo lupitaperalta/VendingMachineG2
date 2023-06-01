@@ -42,7 +42,7 @@ public class VendingMachineView {
     }
     
     public String displayUserProductChoice(Product product){
-        return io.readString("You have chosen: " + product.getProductId() + "\t" + product.getProductName() + "\t" + product.getPrice() + ".");
+        return io.readString("You have chosen: " + product.getProductId() + "\t" + product.getProductName() + "\t" + product.getPrice() + ".\n Press Enter to Contine.");
     }
     
     public void displayMoneyInput(BigDecimal amount) {
@@ -53,7 +53,7 @@ public class VendingMachineView {
     
     public void displayChange(Change change) {
         
-        io.print("CHANGE DUE:");
+        io.print("---CHANGE DUE---");
         io.print(CoinValue.QUARTERS + ":" + change.getQuarters());
         io.print(CoinValue.DIMES + ":" + change.getDimes());
         io.print(CoinValue.NICKELS + ":" + change.getNickels());
@@ -64,7 +64,7 @@ public class VendingMachineView {
 
 
     public void displayBalance(BigDecimal bal) {
-        io.print("Current balance:"+ bal.setScale(2, RoundingMode.HALF_UP));
+        io.print("Current balance: $"+ bal.setScale(2, RoundingMode.HALF_UP ));
     }
 
 
@@ -89,7 +89,7 @@ public class VendingMachineView {
     }
     
     public void displayUserResponse(){
-        io.print("Do you want to make another selection?");
+        io.print("Do you want to make another selection? Yes or No");
         
     }
     

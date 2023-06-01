@@ -65,6 +65,7 @@ public class VendingMachineController {
  
                 displayUserMoneyInput(moneyDeposited);
                 displayChangeReturnedToUser(moneyDeposited, selectedProduct);
+                displayBalance(moneyDeposited, selectedProduct);
                 updateSoldProduct(selectedProduct);
                 saveProductList();
                 
@@ -74,14 +75,13 @@ public class VendingMachineController {
                 displayErrorMessage(ex.getMessage());
                 
             } finally {
-                
-                displayFinalMessage();
+                view.displayUserResponse();
+                keepGoing = scan.nextLine();
                 
             }
             
-            view.displayUserResponse();
-            keepGoing = scan.nextLine();
-                        
+            
+            displayFinalMessage();            
         }
         
     } 
@@ -109,7 +109,7 @@ public class VendingMachineController {
     BigDecimal userMoneyInput (BigDecimal amount) {
         
         BigDecimal total = amount.add(view.promptMoneyInput());
-        //UPDatting
+
         
         return total;
         
@@ -162,6 +162,17 @@ public class VendingMachineController {
         view.displayChange(change);
 
     }
+    
+    void displayBalance(BigDecimal amount, Product product){
+        BigDecimal productCost = product.getPrice();
+        
+        BigDecimal balance = amount.subtract(productCost);
+      
+        view.displayBalance(balance);
+
+    }
+    
+    
     
     boolean toExitVendingMachine(boolean isEnoughMoney) {
         if(isEnoughMoney) {
