@@ -79,10 +79,11 @@ public class VendingMachineController {
                 keepGoing = scan.nextLine();
                 
             }
-            
-            
-            displayFinalMessage();            
+           
+                       
         }
+        
+        displayFinalMessage(); 
         
     } 
     
