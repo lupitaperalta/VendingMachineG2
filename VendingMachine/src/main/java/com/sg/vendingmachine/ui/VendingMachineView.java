@@ -23,12 +23,14 @@ public class VendingMachineView {
     public void displayMenuBanner() {
         io.print("=== Vending Machine Menu ===");
     }
+    
     public void displayItemHeader() {
         io.print("No\tItem\t\tCost");
         io.print("---------------------");
     }
+    
     public void displayProduct(Product product) {
-        io.print(product.getProductId() + "\t" + product.getProductName() + "\t" + product.getPrice());
+        io.print(product.getProductId() + "\t" + product.getProductName() + "\t\t" + product.getPrice());
     }
     
     public BigDecimal promptMoneyInput() {
@@ -76,18 +78,21 @@ public class VendingMachineView {
     
     public boolean toExit() {
         
-        String answer = io.readString("Do you want to exit vending machine? Yes or No");
-        
-        if (answer.contains("y")){
-            return true;    
-        } else {
-            return false;
-        }
+//        String answer = io.readString("Do you want to make another selection? Yes or No");
+//        
+//        if (answer.contains("y")){
+//            return true;    
+//        } else {
+//            return false;
+//        }
+
+        return true;
        
     }
     
     public void displayUserResponse(){
         io.print("Do you want to make another selection?");
+        
     }
     
     
