@@ -66,7 +66,7 @@ public class VendingMachineController {
                 displayUserMoneyInput(moneyDeposited);
                 displayChangeReturnedToUser(moneyDeposited, selectedProduct);
                 updateSoldProduct(selectedProduct);
-                saveProudctList();
+                saveProductList();
                 
                                 
             } catch (VendingMachinePersistenceException ex){
@@ -152,13 +152,15 @@ public class VendingMachineController {
     }
     
     void displayUserMoneyInput(BigDecimal amount){
-        view.displyMoneyInput(amount);
+        view.displayMoneyInput(amount);
     }
     
     void displayChangeReturnedToUser(BigDecimal amount, Product product){
         
         Change change = service.calculateChange(amount, product);
+
         view.displayChange(change);
+
     }
     
     boolean toExitVendingMachine(boolean isEnoughMoney) {
@@ -184,7 +186,7 @@ public class VendingMachineController {
         }
     }
     
-    void saveProudctList() throws VendingMachinePersistenceException {
+    void saveProductList() throws VendingMachinePersistenceException {
         
         try {
             service.saveProductList();

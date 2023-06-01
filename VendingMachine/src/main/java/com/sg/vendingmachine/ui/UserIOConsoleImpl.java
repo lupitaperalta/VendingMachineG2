@@ -10,6 +10,11 @@ import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
     Scanner sc;
+    public UserIOConsoleImpl() {
+        sc = new Scanner(System.in);
+    }
+
+
 
     @Override
     public void print(String msg) {
