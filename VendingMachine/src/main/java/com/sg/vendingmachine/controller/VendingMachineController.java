@@ -12,6 +12,7 @@ import com.sg.vendingmachine.service.VendingMachinePersistenceException;
 import com.sg.vendingmachine.service.VendingMachineServiceLayer;
 import com.sg.vendingmachine.ui.VendingMachineView;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -36,7 +37,7 @@ public class VendingMachineController {
         BigDecimal moneyDeposited = new BigDecimal("0");
         Product selectedProduct = null;
         String keepGoing = "yes";
-
+        String input = "";
         Scanner scan = new Scanner(System.in);
         
         while(keepGoing.equals("yes")){
@@ -59,8 +60,9 @@ public class VendingMachineController {
                     if(toExitVendingMachine(isEnoughMoney)){
                         return;
                     }
+                    
                 } while (!isEnoughMoney); 
-                
+ 
                 displayUserMoneyInput(moneyDeposited);
                 displayChangeReturnedToUser(moneyDeposited, selectedProduct);
                 updateSoldProduct(selectedProduct);
@@ -94,14 +96,22 @@ public class VendingMachineController {
     //Need to Update
     void productMenu() throws VendingMachinePersistenceException, VendingMachineNoItemInventoryException {
         
-             
+        
+        Map<String, Product> availableProducts = service.loadProductsInStock();
+        
+        for (String key: availableProducts.keySet()) {
+            view.displayProduct(availableProducts.get(key));
+        }
         
     }
     
  
     BigDecimal userMoneyInput (BigDecimal amount) {
         
-       return view.promptMoneyInput();
+        BigDecimal total = amount.add(view.promptMoneyInput());
+        
+        return total;
+        
         
     }
     
