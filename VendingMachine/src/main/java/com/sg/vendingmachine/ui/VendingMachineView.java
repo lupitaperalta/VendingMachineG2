@@ -78,13 +78,9 @@ public class VendingMachineView {
     
     public boolean toExit() {
         
-        String answer = io.readString("Do you want to make another selection? Yes or No");
-
-        if (answer.contains("y")){
-            return true;
-        } else {
-            return false;
-        }
+        String answer = io.readString("Do you want to make another selection? Yes or No").toLowerCase();
+        
+        return answer.contains("y");
        
     }
     

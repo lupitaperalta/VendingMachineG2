@@ -40,7 +40,7 @@ public class VendingMachineController {
         String input = "";
         Scanner scan = new Scanner(System.in);
         
-        while(keepGoing.equals("yes")){
+        while(keepGoing.equals("yes") || keepGoing.equals("Yes")){
             
             //LOCAL VARIABLES
             boolean isEnoughMoney = false;
