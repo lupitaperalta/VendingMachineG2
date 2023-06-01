@@ -109,6 +109,7 @@ public class VendingMachineController {
     BigDecimal userMoneyInput (BigDecimal amount) {
         
         BigDecimal total = amount.add(view.promptMoneyInput());
+        //UPDatting
         
         return total;
         
