@@ -37,7 +37,7 @@ public class VendingMachineController {
         BigDecimal moneyDeposited = new BigDecimal("0");
         Product selectedProduct = null;
         String keepGoing = "yes";
-        String input = "";
+        BigDecimal currentBalance = new BigDecimal("0");
         Scanner scan = new Scanner(System.in);
         
         while(keepGoing.equals("yes") || keepGoing.equals("Yes")){
@@ -51,7 +51,7 @@ public class VendingMachineController {
                 do {
                     productMenu();
                     
-                    moneyDeposited = userMoneyInput(moneyDeposited);
+                    moneyDeposited = userMoneyInput(currentBalance);
                     
                     selectedProduct = getChosenProduct();
                     
@@ -66,6 +66,8 @@ public class VendingMachineController {
                 displayUserMoneyInput(moneyDeposited);
                 displayChangeReturnedToUser(moneyDeposited, selectedProduct);
                 displayBalance(moneyDeposited, selectedProduct);
+                currentBalance = updateBalance(moneyDeposited, selectedProduct);
+                
                 updateSoldProduct(selectedProduct);
                 saveProductList();
                 
@@ -166,11 +168,17 @@ public class VendingMachineController {
     
     void displayBalance(BigDecimal amount, Product product){
         BigDecimal productCost = product.getPrice();
-        
         BigDecimal balance = amount.subtract(productCost);
       
         view.displayBalance(balance);
 
+    }
+    
+    BigDecimal updateBalance (BigDecimal amount, Product product) {
+        BigDecimal productCost = product.getPrice();
+        BigDecimal balance = amount.subtract(productCost);
+            
+        return balance;
     }
     
     
